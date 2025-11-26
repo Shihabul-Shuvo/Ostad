@@ -1,4 +1,4 @@
-# Calculator Project - Assignment 1
+# Calculator Project
 
 A comprehensive exploration of Python programming concepts through multiple calculator implementations.
 
