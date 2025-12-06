@@ -68,7 +68,7 @@ ID: 6408, Title: Study Python, Description: Complete module 4, Created At: 2025-
 3. Navigate to the project directory.
 4. Run the Python script:
    ```bash
-   python task_manager.py
+   python student_task_manager.py
    ```
 
 ## License:
