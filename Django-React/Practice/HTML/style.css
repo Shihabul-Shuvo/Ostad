@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parent{
+    display: flex;
+    border: 5px solid black;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.a, .b, .c{
+    width: 100px;
+    height: 100px;
+}
+.a {
+    background-color: red;
+}
+.b{
+    background-color: green;
+}
+.c{
+    background-color: blue;
+}
