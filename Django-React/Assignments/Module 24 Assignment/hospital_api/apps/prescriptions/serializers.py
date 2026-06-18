@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from apps.appointments.models import Appointment
+
 from .models import Prescription, PrescriptionMedicine
 
 
@@ -24,6 +26,14 @@ class PrescriptionSerializer(serializers.ModelSerializer):
             "prescription_medicines",
         ]
         read_only_fields = ["created_at"]
+
+    def validate(self, attrs):
+        appointment = attrs.get("appointment", getattr(self.instance, "appointment", None))
+        if appointment and appointment.status == Appointment.Status.CANCELLED:
+            raise serializers.ValidationError(
+                {"appointment": "Cannot create a prescription for a cancelled appointment."}
+            )
+        return attrs
 
     def create(self, validated_data):
         items_data = validated_data.pop("prescription_medicines")

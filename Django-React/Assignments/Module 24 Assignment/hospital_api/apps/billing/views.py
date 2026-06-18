@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
 from apps.users.models import User
@@ -17,6 +18,8 @@ class BillViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["patch"])
     def mark_paid(self, request, pk=None):
         bill = self.get_object()
+        if bill.paid:
+            raise ValidationError({"paid": ["This bill has already been marked as paid."]})
         bill.paid = True
         bill.save(update_fields=["paid"])
         serializer = self.get_serializer(bill)
