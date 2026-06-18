@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from apps.users.models import User
 
@@ -11,6 +13,14 @@ class BillViewSet(viewsets.ModelViewSet):
     queryset = Bill.objects.select_related("patient__user").all()
     serializer_class = BillSerializer
     permission_classes = [CanAccessBilling]
+
+    @action(detail=True, methods=["patch"])
+    def mark_paid(self, request, pk=None):
+        bill = self.get_object()
+        bill.paid = True
+        bill.save(update_fields=["paid"])
+        serializer = self.get_serializer(bill)
+        return Response(serializer.data)
 
     def get_queryset(self):
         queryset = super().get_queryset()

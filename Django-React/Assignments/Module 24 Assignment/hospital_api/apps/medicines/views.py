@@ -9,4 +9,4 @@ class MedicineViewSet(viewsets.ModelViewSet):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
     permission_classes = [IsAdminOrReadOnly]
-    search_fields = ["name"]
+    search_fields = ["name", "description"]
