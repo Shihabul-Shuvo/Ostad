@@ -134,6 +134,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = "users.User"
+
 
 # Django REST Framework
 # https://www.django-rest-framework.org/api-guide/settings/
@@ -173,6 +175,3 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
-
-# NOTE: AUTH_USER_MODEL is intentionally not set yet. The custom User model
-# is introduced in Phase 2, before the first migration is run.
