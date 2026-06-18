@@ -7,7 +7,6 @@
     --btn-text-color: white;
     --font-size: 20px;
 }
-
 * {
     margin: 0px;
     padding: 0px;
@@ -17,7 +16,6 @@
 body {
     font-family: var(--primary-font);
     color: var(--secondary-text-color);
-    margin: 30px;
     font-size: var(--font-size);
 }
 
@@ -303,7 +301,7 @@ button {
 
 .article-cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
 }
 
@@ -330,6 +328,7 @@ button {
     color: var(--primary-color);
     font-size: var(--font-size);
     border: 0px;
+    margin-top: 20px;
     background: transparent;
 }
 
