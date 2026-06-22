@@ -24,3 +24,11 @@ class DoctorSerializer(serializers.ModelSerializer):
             "experience",
             "is_available",
         ]
+
+    def validate_user_id(self, value):
+        queryset = Doctor.objects.filter(user=value)
+        if self.instance:
+            queryset = queryset.exclude(pk=self.instance.pk)
+        if queryset.exists():
+            raise serializers.ValidationError("This user already has a doctor profile.")
+        return value

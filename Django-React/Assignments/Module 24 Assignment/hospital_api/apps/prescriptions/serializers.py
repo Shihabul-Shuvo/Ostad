@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from apps.appointments.models import Appointment
+from apps.users.models import User
 
 from .models import Prescription, PrescriptionMedicine
 
@@ -32,6 +33,16 @@ class PrescriptionSerializer(serializers.ModelSerializer):
         if appointment and appointment.status == Appointment.Status.CANCELLED:
             raise serializers.ValidationError(
                 {"appointment": "Cannot create a prescription for a cancelled appointment."}
+            )
+        request = self.context.get("request")
+        if (
+            appointment
+            and request
+            and request.user.role == User.Role.DOCTOR
+            and appointment.doctor.user_id != request.user.id
+        ):
+            raise serializers.ValidationError(
+                {"appointment": "You can only create or update prescriptions for your own appointments."}
             )
         return attrs
 

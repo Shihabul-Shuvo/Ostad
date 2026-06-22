@@ -29,3 +29,11 @@ class PatientSerializer(serializers.ModelSerializer):
         if value < 0:
             raise serializers.ValidationError("Age must be >= 0.")
         return value
+
+    def validate_user_id(self, value):
+        queryset = Patient.objects.filter(user=value)
+        if self.instance:
+            queryset = queryset.exclude(pk=self.instance.pk)
+        if queryset.exists():
+            raise serializers.ValidationError("This user already has a patient profile.")
+        return value
