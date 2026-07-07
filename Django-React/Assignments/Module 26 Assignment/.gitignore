@@ -1,0 +1,10 @@
+# AI tooling / assignment instruction files (not part of the deliverable)
+CLAUDE.md
+prompt.md
+Module_26_React_Vite_Project.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
