@@ -32,6 +32,24 @@ npm run dev
 Then open the printed local URL (usually `http://localhost:5173`) in your
 browser.
 
+### Windows Setup (Python venv)
+
+This project itself has no Python dependencies, but if you're running any
+auxiliary Python scripts/tooling alongside it on Windows, isolate them in a
+virtual environment:
+
+```powershell
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Deactivate when done:
+
+```powershell
+deactivate
+```
+
 ## Folder Structure
 
 ```

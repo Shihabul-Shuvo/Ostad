@@ -34,18 +34,24 @@ function StudentForm({ onAdd }) {
     <form className="student-form" onSubmit={handleSubmit}>
       <input
         type="text"
+        id="name"
+        name="name"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <input
         type="text"
+        id="department"
+        name="department"
         placeholder="Department"
         value={department}
         onChange={(e) => setDepartment(e.target.value)}
       />
       <input
         type="text"
+        id="cgpa"
+        name="cgpa"
         placeholder="CGPA"
         value={cgpa}
         onChange={(e) => setCgpa(e.target.value)}
